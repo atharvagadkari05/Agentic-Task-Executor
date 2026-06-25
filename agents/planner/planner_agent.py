@@ -9,9 +9,14 @@ llm = ChatOllama(model="qwen2.5:7b", temperature=0.7)
 # Define the prompt template
 prompt_template = PromptTemplate(
     input_variables=["task"],
-    template="""Break the following task into clear, actionable steps.
+    template="""Break the following task into clear, actionable steps for an executor agent.
 
 Task: {task}
+
+Guidelines:
+- Return 3 to 7 steps.
+- Each step should be specific enough to execute and review independently.
+- Keep the order logical.
 
 Respond with valid JSON in this format:
 {{
